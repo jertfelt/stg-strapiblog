@@ -6,9 +6,10 @@ export default function RecensionDetalj() {
   
   const { id } = useParams()
 
-  const {loading, error, data} =useFetch("http://localhost:1337/api/recensions/" + id)
-  
-  const shortData = data.data.attributes;
+  const {loading, error, data} = useFetch("http://localhost:1337/api/recensions/" + id)
+
+  // const shortData = data.data.attributes;
+  console.log(data)
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
@@ -16,10 +17,10 @@ export default function RecensionDetalj() {
   return (
     <div className="detaljer--content">
       { <div className="recension--div">
-        <div className='rating'>{shortData.betyg}</div>
+        {/* <div className='rating'>{shortData.betyg}</div>
           <h2>{shortData.title}</h2>
           <small>Console List</small>
-          <p>{shortData.text}</p>
+          <p>{shortData.text}</p> */}
       </div>}
     </div>
   )

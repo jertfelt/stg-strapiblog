@@ -1,37 +1,34 @@
 import React from 'react'
-// import useFetch from "../hooks/useFetch"
+ import useFetch from "../hooks/useFetch"
 import { Link } from 'react-router-dom';
-import {useQuery, gql} from "@apollo/client";
+// import {useQuery, gql} from "@apollo/client";
 
-const REVIEWS = gql`
-query GetReviews {
-  recensions {
-    data {
-      id
-      attributes {
-        title,
-        text,
-        betyg
-      }
-    }
-  }
-}
-`
+// const REVIEWS = gql`
+// query GetReviews {
+//   recensions {
+//     data {
+//       id
+//       attributes {
+//         title
+//         text
+//         betyg
+//       }
+//     }
+//   }
+// }
+// `
 
 
 export default function Homepage() {
-  // const {loading, error, data} = useFetch("http://localhost:1337/api/recensions");
-  const {loading, error, data} = useQuery(REVIEWS);
-
-  console.log(REVIEWS)
-  console.log(REVIEWS.data)
+const {loading, error, data} = useFetch("http://localhost:1337/api/recensions");
+  // const {loading, error, data} = useQuery(REVIEWS);
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
 
   return (
   <div className="homepage--content">
-      {REVIEWS.data.map((item) => (
+      {data.data.map((item) => (
         <div key={item.id} className="recension--div">
           <div className='rating'>{item.attributes.betyg}</div>
             <h2>{item.attributes.title}</h2>
