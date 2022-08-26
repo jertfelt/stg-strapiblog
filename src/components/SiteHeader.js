@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 export default function SiteHeader() {
   return (
-    <div className="header">
+    <div className="site--header">
       <Link to="/"><h1>Stg spelar spel</h1></Link>
     </div>
   )
